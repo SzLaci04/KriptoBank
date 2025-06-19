@@ -14,6 +14,7 @@ namespace KriptoBank.DataContext.Entities
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public Wallet? Wallet { get; set; }
         public List<CryptoTransaction> CryptoTransactions { get; set; }=new List<CryptoTransaction>(){ };
     }

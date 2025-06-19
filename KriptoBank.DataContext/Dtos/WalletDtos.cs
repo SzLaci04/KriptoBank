@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KriptoBank.DataContext.Dtos
 {
-    public class WalletCurrentState
+    public class WalletCurrentStateDto
     { 
         public int Id { get; set; }
         public int UserId { get; set; }

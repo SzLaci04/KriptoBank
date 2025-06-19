@@ -9,10 +9,9 @@ namespace KriptoBank.DataContext.Entities
     public class UserCryptoCurrency
     {
         public int Id { get; set; }
-        public int WalletId { get; set; }
-        public int CryptoId { get; set; }
+        public int? WalletId { get; set; }
+        public int? CryptoId { get; set; }
         public float PriceAtBuy { get; set; }
-
         public Wallet Wallet { get; set; }
         public CryptoCurrency CryptoCurrency { get; set; }
     }

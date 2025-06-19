@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bIltmJgwg/A=",
+  "dgSpecHash": "XLQZ8GHSAcg=",
   "success": true,
-  "projectFilePath": "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj",
+  "projectFilePath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\laci1\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\laci1\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

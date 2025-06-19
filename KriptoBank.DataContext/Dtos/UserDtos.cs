@@ -39,7 +39,7 @@ namespace KriptoBank.DataContext.Dtos
     }
     public class UserDataDto
     {
-        public int Id;
+        public int Id { get; set; }
         public string Username { get; set; }
         [EmailAddress]
         public string Email { get; set; }

@@ -12,8 +12,9 @@ namespace KriptoBank.DataContext.Entities
         public string Acronym { get; set; }
         public string Name { get; set; }
         public float CurrentPrice { get; set; }
-        public int Amount { get; set; }
+        public int TotalAmount { get; set; }
         public float AvgPrice { get; set; }
+        public bool IsDeleted {  get; set; }=false;
 
         public List<CryptoHistory> CurrencyHistory { get; set; }
     }

@@ -14,8 +14,8 @@ namespace KriptoBank.DataContext.Entities
     public class CryptoTransaction
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int CryptoId { get; set; }
+        public int? UserId { get; set; }
+        public int? CryptoId { get; set; }
         public TransactionType Type { get; set; }
         public int Amount { get; set; }
         public float Price { get; set; }

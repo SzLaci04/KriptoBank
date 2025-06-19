@@ -5241,11 +5241,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Egyetem\\Halado_prog2\\KriptoBank\\KriptoBank.csproj",
+      "projectUniqueName": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\KriptoBank.csproj",
       "projectName": "KriptoBank",
-      "projectPath": "D:\\Egyetem\\Halado_prog2\\KriptoBank\\KriptoBank.csproj",
+      "projectPath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\KriptoBank.csproj",
       "packagesPath": "C:\\Users\\laci1\\.nuget\\packages\\",
-      "outputPath": "D:\\Egyetem\\Halado_prog2\\KriptoBank\\obj\\",
+      "outputPath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5267,11 +5267,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj": {
-              "projectPath": "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj"
+            "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj": {
+              "projectPath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj"
             },
-            "D:\\Egyetem\\Halado_prog2\\KriptoBank.Services\\KriptoBank.Services.csproj": {
-              "projectPath": "D:\\Egyetem\\Halado_prog2\\KriptoBank.Services\\KriptoBank.Services.csproj"
+            "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\KriptoBank.Services.csproj": {
+              "projectPath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\KriptoBank.Services.csproj"
             }
           }
         }

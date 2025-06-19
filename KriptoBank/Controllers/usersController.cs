@@ -21,7 +21,7 @@ namespace KriptoBank.Controllers
         { 
             var user=await _userServices.GetUserByIdAsync(id);
             if (user == null)
-                return NotFound();
+                return NotFound("Nincs ilyen id-vel ellátott felhasználó");
             return Ok(user);
         }
 
@@ -29,6 +29,8 @@ namespace KriptoBank.Controllers
         public async Task<IActionResult> RegisterUser([FromBody] UserRegistrationDto userRegistrationDto)
         {
             var user= await _userServices.RegisterUserAsync(userRegistrationDto);
+            if (user.Email == "NotUnique")
+                return BadRequest("Ilyen email címmel már csináltak felhasználót!");
             return CreatedAtAction(nameof(GetUserData),new { id=user.Id},user);
                 
         }
@@ -36,9 +38,18 @@ namespace KriptoBank.Controllers
         public async Task<IActionResult>UpdateUser(int id,UserUpdatePasswordDto updatePasswordDto)
         {
             var user = await _userServices.UpdateUserPasswordAsync(id, updatePasswordDto);
-            if (user == null) 
-                return NotFound();
+            if (user == null)
+                return NotFound("Nincs ilyen id-vel ellátott felhasználó");
             return Ok(user);
+        }
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult>DeleteUser(int userId)
+        {
+            var success=await _userServices.DeleteUserAsync(userId);
+            if (success)
+                return Ok(userId);
+            else
+                return NotFound("Nincs ilyen id-vel ellátott felhasználó");
         }
     }
 }

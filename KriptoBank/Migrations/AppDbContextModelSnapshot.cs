@@ -34,18 +34,21 @@ namespace KriptoBank.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<float>("AvgPrice")
                         .HasColumnType("real");
 
                     b.Property<float>("CurrentPrice")
                         .HasColumnType("real");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalAmount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -60,7 +63,7 @@ namespace KriptoBank.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CryptoId")
+                    b.Property<int?>("CryptoId")
                         .HasColumnType("int");
 
                     b.Property<float>("NewPrice")
@@ -90,7 +93,7 @@ namespace KriptoBank.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("CryptoId")
+                    b.Property<int?>("CryptoId")
                         .HasColumnType("int");
 
                     b.Property<int>("CurrencyId")
@@ -108,7 +111,7 @@ namespace KriptoBank.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -131,6 +134,9 @@ namespace KriptoBank.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -156,13 +162,13 @@ namespace KriptoBank.Migrations
                     b.Property<int>("CryptoCurrencyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CryptoId")
+                    b.Property<int?>("CryptoId")
                         .HasColumnType("int");
 
                     b.Property<float>("PriceAtBuy")
                         .HasColumnType("real");
 
-                    b.Property<int>("WalletId")
+                    b.Property<int?>("WalletId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -185,13 +191,17 @@ namespace KriptoBank.Migrations
                     b.Property<float>("Balance")
                         .HasColumnType("real");
 
-                    b.Property<int>("UserId")
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Wallets");
                 });
@@ -201,8 +211,7 @@ namespace KriptoBank.Migrations
                     b.HasOne("KriptoBank.DataContext.Entities.CryptoCurrency", "Currency")
                         .WithMany("CurrencyHistory")
                         .HasForeignKey("CryptoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Currency");
                 });
@@ -218,8 +227,7 @@ namespace KriptoBank.Migrations
                     b.HasOne("KriptoBank.DataContext.Entities.User", "User")
                         .WithMany("CryptoTransactions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Currency");
 
@@ -237,8 +245,7 @@ namespace KriptoBank.Migrations
                     b.HasOne("KriptoBank.DataContext.Entities.Wallet", "Wallet")
                         .WithMany("UserCurrencies")
                         .HasForeignKey("WalletId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("CryptoCurrency");
 
@@ -250,8 +257,7 @@ namespace KriptoBank.Migrations
                     b.HasOne("KriptoBank.DataContext.Entities.User", "User")
                         .WithOne("Wallet")
                         .HasForeignKey("KriptoBank.DataContext.Entities.Wallet", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("User");
                 });

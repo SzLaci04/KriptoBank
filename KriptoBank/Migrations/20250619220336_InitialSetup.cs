@@ -20,8 +20,9 @@ namespace KriptoBank.Migrations
                     Acronym = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CurrentPrice = table.Column<float>(type: "real", nullable: false),
-                    Amount = table.Column<int>(type: "int", nullable: false),
-                    AvgPrice = table.Column<float>(type: "real", nullable: false)
+                    TotalAmount = table.Column<int>(type: "int", nullable: false),
+                    AvgPrice = table.Column<float>(type: "real", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +37,8 @@ namespace KriptoBank.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,7 +51,7 @@ namespace KriptoBank.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CryptoId = table.Column<int>(type: "int", nullable: false),
+                    CryptoId = table.Column<int>(type: "int", nullable: true),
                     TimeOfChange = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OldPrice = table.Column<float>(type: "real", nullable: false),
                     NewPrice = table.Column<float>(type: "real", nullable: false)
@@ -62,7 +64,7 @@ namespace KriptoBank.Migrations
                         column: x => x.CryptoId,
                         principalTable: "CryptoCurrencies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,8 +73,8 @@ namespace KriptoBank.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    CryptoId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    CryptoId = table.Column<int>(type: "int", nullable: true),
                     Type = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
@@ -94,7 +96,7 @@ namespace KriptoBank.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -103,8 +105,9 @@ namespace KriptoBank.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    Balance = table.Column<float>(type: "real", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    Balance = table.Column<float>(type: "real", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,7 +117,7 @@ namespace KriptoBank.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -123,8 +126,8 @@ namespace KriptoBank.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    WalletId = table.Column<int>(type: "int", nullable: false),
-                    CryptoId = table.Column<int>(type: "int", nullable: false),
+                    WalletId = table.Column<int>(type: "int", nullable: true),
+                    CryptoId = table.Column<int>(type: "int", nullable: true),
                     PriceAtBuy = table.Column<float>(type: "real", nullable: false),
                     CryptoCurrencyId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -142,7 +145,7 @@ namespace KriptoBank.Migrations
                         column: x => x.WalletId,
                         principalTable: "Wallets",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateIndex(
@@ -174,7 +177,8 @@ namespace KriptoBank.Migrations
                 name: "IX_Wallets_UserId",
                 table: "Wallets",
                 column: "UserId",
-                unique: true);
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
         }
 
         /// <inheritdoc />

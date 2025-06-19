@@ -26,22 +26,26 @@ namespace KriptoBank.DataContext.Context
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Wallet)
                 .WithOne(u => u.User)
-                .HasForeignKey<Wallet>(w => w.UserId);
+                .HasForeignKey<Wallet>(w => w.UserId)
+                .OnDelete(DeleteBehavior.SetNull); 
 
             modelBuilder.Entity<Wallet>()
                 .HasMany(u => u.UserCurrencies)
                 .WithOne(uc => uc.Wallet)
-                .HasForeignKey(uc => uc.WalletId);
+                .HasForeignKey(uc => uc.WalletId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<CryptoCurrency>()
                 .HasMany(c => c.CurrencyHistory)
                 .WithOne(ch => ch.Currency)
-                .HasForeignKey(ch => ch.CryptoId);
+                .HasForeignKey(ch => ch.CryptoId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.CryptoTransactions)
                 .WithOne(ct => ct.User)
-                .HasForeignKey(ct => ct.UserId);
+                .HasForeignKey(ct => ct.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

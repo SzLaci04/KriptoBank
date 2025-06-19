@@ -1,8 +1,8 @@
 using KriptoBank.Services;
 using KriptoBank.DataContext.Context;
+using KriptoBank.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using KriptoBank.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +21,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 );
 
 builder.Services.AddScoped<IUserServices, UserServices>();
-builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+builder.Services.AddScoped<IWalletServices, WalletServices>();
 
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {

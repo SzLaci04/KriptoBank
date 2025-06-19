@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj": {}
+    "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj": {}
   },
   "projects": {
-    "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj": {
+    "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj",
+        "projectUniqueName": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj",
         "projectName": "KriptoBank.DataContext",
-        "projectPath": "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj",
+        "projectPath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj",
         "packagesPath": "C:\\Users\\laci1\\.nuget\\packages\\",
-        "outputPath": "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\obj\\",
+        "outputPath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
