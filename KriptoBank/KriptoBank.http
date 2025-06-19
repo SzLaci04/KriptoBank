@@ -1,0 +1,6 @@
+@KriptoBank_HostAddress = http://localhost:5143
+
+GET {{KriptoBank_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

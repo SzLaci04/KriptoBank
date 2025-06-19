@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Egyetem\\Halado_prog2\\KriptoBank\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|d:\\egyetem\\halado_prog2\\kriptobank\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12166895-A01C-4484-9DB6-81C6B1D49A56}|..\\KriptoBank.Services\\KriptoBank.Services.csproj|d:\\egyetem\\halado_prog2\\kriptobank.services\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAAA335-8FB3-44D1-97F9-7F89E445B961}|..\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj|d:\\egyetem\\halado_prog2\\kriptobank.datacontext\\dtos\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12166895-A01C-4484-9DB6-81C6B1D49A56}|..\\KriptoBank.Services\\KriptoBank.Services.csproj|d:\\egyetem\\halado_prog2\\kriptobank.services\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AutoMapperProfile.cs",
+              "DocumentMoniker": "D:\\Egyetem\\Halado_prog2\\KriptoBank.Services\\AutoMapperProfile.cs",
+              "RelativeDocumentMoniker": "..\\KriptoBank.Services\\AutoMapperProfile.cs",
+              "ToolTip": "D:\\Egyetem\\Halado_prog2\\KriptoBank.Services\\AutoMapperProfile.cs",
+              "RelativeToolTip": "..\\KriptoBank.Services\\AutoMapperProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T20:42:56.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "usersController.cs",
+              "DocumentMoniker": "D:\\Egyetem\\Halado_prog2\\KriptoBank\\Controllers\\usersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\usersController.cs",
+              "ToolTip": "D:\\Egyetem\\Halado_prog2\\KriptoBank\\Controllers\\usersController.cs",
+              "RelativeToolTip": "Controllers\\usersController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAwCcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T20:27:26.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "D:\\Egyetem\\Halado_prog2\\KriptoBank.Services\\Services\\UserServices.cs",
+              "RelativeDocumentMoniker": "..\\KriptoBank.Services\\Services\\UserServices.cs",
+              "ToolTip": "D:\\Egyetem\\Halado_prog2\\KriptoBank.Services\\Services\\UserServices.cs",
+              "RelativeToolTip": "..\\KriptoBank.Services\\Services\\UserServices.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAqwDUAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T20:11:42.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserDtos.cs",
+              "DocumentMoniker": "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\Dtos\\UserDtos.cs",
+              "RelativeDocumentMoniker": "..\\KriptoBank.DataContext\\Dtos\\UserDtos.cs",
+              "ToolTip": "D:\\Egyetem\\Halado_prog2\\KriptoBank.DataContext\\Dtos\\UserDtos.cs",
+              "RelativeToolTip": "..\\KriptoBank.DataContext\\Dtos\\UserDtos.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwBwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T20:21:50.41Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

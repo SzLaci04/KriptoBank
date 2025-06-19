@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "7h64SWhyBgfb0YPQQNxAnwYFA8xQ2UFKF+rsODBaJk8=",
+  "Source": "KriptoBank",
+  "BasePath": "_content/KriptoBank",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
