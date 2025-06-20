@@ -15,11 +15,9 @@ namespace KriptoBank.DataContext.Dtos
         public float Balance { get; set; }
         public List<UserCryptoCurrencyDto> UserCryptoCurrencies { get; set; }=new List<UserCryptoCurrencyDto>();
     }
-
     public class WalletUpdateDto
     {
         [Required]
         public float Balance { get; set; }
-        public List<UserCryptoCurrencyDto> UserCryptoCurrencies { get; set; } = new List<UserCryptoCurrencyDto>();
     }
 }

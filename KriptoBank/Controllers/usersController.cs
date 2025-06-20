@@ -47,7 +47,7 @@ namespace KriptoBank.Controllers
         {
             var success=await _userServices.DeleteUserAsync(userId);
             if (success)
-                return Ok(userId);
+                return Ok($"{userId} id-vel ellátott felhasználó törölve!");
             else
                 return NotFound("Nincs ilyen id-vel ellátott felhasználó");
         }

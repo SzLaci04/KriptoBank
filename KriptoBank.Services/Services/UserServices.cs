@@ -51,12 +51,17 @@ namespace KriptoBank.Services.Services
             var user=_mapper.Map<User>(userRegistrationDto);
             //check for unique email addresses
             var allUsers= _appDbContext.Users.ToList();
-            foreach(var _user in allUsers)
+            foreach(var _user in allUsers.Where(u=>!u.IsDeleted))
             {
                 if (_user.Email == user.Email)
                     return new UserDataDto { Username = "NotUnique", Email = "NotUnique", Id = -1 };
             }
+            //add user
             await _appDbContext.Users.AddAsync(user);
+            await _appDbContext.SaveChangesAsync();
+            //add wallet
+            Wallet wallet = new Wallet { UserId = user.Id , Balance=4000.00F};
+            await _appDbContext.Wallets.AddAsync(wallet);
             await _appDbContext.SaveChangesAsync();
             return _mapper.Map<UserDataDto>(user);
         }

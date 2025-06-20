@@ -99,7 +99,7 @@
       },
       {
         "Name": "newBalance",
-        "Type": "System.Single",
+        "Type": "KriptoBank.DataContext.Dtos.WalletUpdateDto",
         "IsRequired": true
       }
     ],

@@ -17,6 +17,8 @@ namespace KriptoBank.Services
             CreateMap<User,UserDataDto>().ReverseMap();
             CreateMap<UserRegistrationDto, User>();
             CreateMap<UserUpdatePasswordDto, User>();
+            //Wallet mapping
+            CreateMap<Wallet,WalletCurrentStateDto>().ReverseMap();
         }
     }
 }

@@ -7,30 +7,54 @@ using AutoMapper;
 using KriptoBank.DataContext.Context;
 using KriptoBank.DataContext.Dtos;
 using KriptoBank.DataContext.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace KriptoBank.Services.Services
 {
     public interface IWalletServices
     {
         public Task<WalletCurrentStateDto> GetWalletAsync(int userId);
-        public Task<WalletUpdateDto> UpdateBalanceAsync(int userId, float newBalance);
+        public Task<WalletCurrentStateDto?> UpdateBalanceAsync(int userId, WalletUpdateDto newBalance);
         public Task<bool> DeleteWalletAsync(int userId);
     }
     public class WalletServices : IWalletServices
     {
-        public Task<bool> DeleteWalletAsync(int userId)
+        private AppDbContext _appDbContext;
+        private IMapper _mapper;
+        public WalletServices(AppDbContext context, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _appDbContext = context;
+            _mapper = mapper;
+        }
+        public async Task<bool> DeleteWalletAsync(int userId)
+        {
+            var wallet = await _appDbContext.Wallets.SingleOrDefaultAsync(w=>w.UserId==userId);
+            if (wallet == null||wallet.IsDeleted)
+                return false;
+            wallet.IsDeleted = true;
+            _appDbContext.Wallets.Update(wallet);
+            await _appDbContext.SaveChangesAsync();
+            return true;
         }
 
-        public Task<WalletCurrentStateDto> GetWalletAsync(int userId)
+        public async Task<WalletCurrentStateDto> GetWalletAsync(int userId)
         {
-            throw new NotImplementedException();
+            var wallet = await _appDbContext.Wallets.SingleOrDefaultAsync(w => w.UserId == userId);
+            if (wallet == null||wallet.IsDeleted)
+                return null;
+            return _mapper.Map<WalletCurrentStateDto>(wallet);
         }
 
-        public Task<WalletUpdateDto> UpdateBalanceAsync(int userId, float newBalance)
+        public async Task<WalletCurrentStateDto?> UpdateBalanceAsync(int userId, WalletUpdateDto newBalance)
         {
-            throw new NotImplementedException();
+            var Wallet = await _appDbContext.Wallets.SingleOrDefaultAsync(w => w.UserId == userId);
+            if (Wallet == null || Wallet.IsDeleted)
+                return null;
+            Wallet.Balance=newBalance.Balance;
+            _appDbContext.Wallets.Update(Wallet);
+            await _appDbContext.SaveChangesAsync();
+            return _mapper.Map<WalletCurrentStateDto>(Wallet);
+
         }
     }
 }

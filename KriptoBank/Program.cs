@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Server=(local);Database=CryptoDb_NEPTUN;Trusted_Connection=True;TrustServerCertificate=True;
 string connectionString = "Server=(LocalDB)\\MSSQLLocalDB;Database=CryptoDb_M5ZCE4;Trusted_Connection=True;TrustServerCertificate=\r\nTrue;";
 
 // Add services to the container.
