@@ -12,12 +12,11 @@ namespace KriptoBank.DataContext.Dtos
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string Username { get; set; }
         public int CryptoId { get; set; }
-        public string CryptoAcronym { get; set; }
         public TransactionType Type { get; set; }
         public int Amount { get; set; }
         public float Price { get; set; }
+        public float TotalPrice { get; set; }
         public DateTime TimeOfTransaction { get; set; }
     }
     public class TransactionShortDto
@@ -31,20 +30,23 @@ namespace KriptoBank.DataContext.Dtos
         public DateTime TimeOfTransaction { get; set; }
     }
 
-    public class TransactionCreateDto
+    public class TransactionBuyDto
     {
-        [Required]
-        public int Id { get; set; }
         [Required]
         public int UserId { get; set; }
         [Required]
         public int CryptoId { get; set; }
         [Required]
-        public TransactionType Type { get; set; }
+        public int Amount { get; set; }
+    }
+    public class TransactionSellDto
+    {
+        [Required]
+        public int UserId { get; set; }
+        [Required]
+        public int CryptoId { get; set; }
         [Required]
         public int Amount { get; set; }
-        [Required]
-        public DateTime TimeOfTransaction { get; set; }
     }
     public class ProfitSummaryDto
     {
@@ -67,5 +69,14 @@ namespace KriptoBank.DataContext.Dtos
         public float AvgPrice { get; set; }
         public float CurrentPrice { get; set; }
         public float Change { get; set; }
+    }
+
+    public class PortfolioDto
+    {
+        public int WalletId { get; set; }
+        public int UserId { get; set; }
+        public List<UserCryptoCurrency> userCryptoCurrencies { get; set; } = new List<UserCryptoCurrency>();
+        public float BaseBalance { get; set; }
+        public float TotalBalance { get; set; }
     }
 }

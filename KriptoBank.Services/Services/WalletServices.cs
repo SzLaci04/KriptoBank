@@ -28,7 +28,7 @@ namespace KriptoBank.Services.Services
         }
         public async Task<bool> DeleteWalletAsync(int userId)
         {
-            var wallet = await _appDbContext.Wallets.SingleOrDefaultAsync(w=>w.UserId==userId);
+            var wallet = await _appDbContext.Wallets.FirstOrDefaultAsync(w=>w.UserId==userId);
             if (wallet == null||wallet.IsDeleted)
                 return false;
             wallet.IsDeleted = true;
@@ -39,15 +39,15 @@ namespace KriptoBank.Services.Services
 
         public async Task<WalletCurrentStateDto> GetWalletAsync(int userId)
         {
-            var wallet = await _appDbContext.Wallets.SingleOrDefaultAsync(w => w.UserId == userId);
-            if (wallet == null||wallet.IsDeleted)
+            var wallet = await _appDbContext.Wallets.Include(w=>w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId);
+            if (wallet == null || wallet.IsDeleted)
                 return null;
             return _mapper.Map<WalletCurrentStateDto>(wallet);
         }
 
         public async Task<WalletCurrentStateDto?> UpdateBalanceAsync(int userId, WalletUpdateDto newBalance)
         {
-            var Wallet = await _appDbContext.Wallets.SingleOrDefaultAsync(w => w.UserId == userId);
+            var Wallet = await _appDbContext.Wallets.FirstOrDefaultAsync(w => w.UserId == userId);
             if (Wallet == null || Wallet.IsDeleted)
                 return null;
             Wallet.Balance=newBalance.Balance;

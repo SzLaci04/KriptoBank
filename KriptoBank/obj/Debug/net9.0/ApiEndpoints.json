@@ -58,6 +58,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "KriptoBank.Controllers.portfolioController",
+    "Method": "GetPortfolio",
+    "RelativePath": "api/portfolio/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.tradeController",
+    "Method": "CryptoBuy",
+    "RelativePath": "api/trade/buy",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "buyDto",
+        "Type": "KriptoBank.DataContext.Dtos.TransactionBuyDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.tradeController",
+    "Method": "CryptoSell",
+    "RelativePath": "api/trade/sell",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sellDto",
+        "Type": "KriptoBank.DataContext.Dtos.TransactionSellDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "KriptoBank.Controllers.usersController",
     "Method": "GetUserData",
     "RelativePath": "api/users/{id}",

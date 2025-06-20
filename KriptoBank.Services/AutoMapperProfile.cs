@@ -18,12 +18,20 @@ namespace KriptoBank.Services
             CreateMap<UserRegistrationDto, User>();
             CreateMap<UserUpdatePasswordDto, User>();
             //Wallet mapping
-            CreateMap<Wallet,WalletCurrentStateDto>().ReverseMap();
+            CreateMap<Wallet, WalletCurrentStateDto>()
+            .ForMember(dest => dest.UserCryptoCurrencies, opt => opt.MapFrom(src => src.UserCurrencies))
+            .ReverseMap();
+
             //CryptoCurrency mapping
             CreateMap<CryptoCurrency, CryptoCurrencyDto>().ReverseMap();
             CreateMap<CryptoCurrencyCreateDto, CryptoCurrency>()
                 .ForMember(dest => dest.CurrentPrice, opt => opt.MapFrom(src => src.StartPrice))
-                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.StartAmount)); 
+                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.StartAmount));
+            CreateMap<UserCryptoCurrency,UserCryptoCurrencyDto>().ReverseMap();
+            //Transaction mapping
+            CreateMap<CryptoTransaction,TransactionDto>().ReverseMap();
+            CreateMap<TransactionSellDto, CryptoTransaction>();
+            CreateMap<TransactionBuyDto, CryptoTransaction>();
         }
     }
 }

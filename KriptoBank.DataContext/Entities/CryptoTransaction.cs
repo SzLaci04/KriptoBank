@@ -23,6 +23,5 @@ namespace KriptoBank.DataContext.Entities
         public DateTime TimeOfTransaction { get; set; }=DateTime.UtcNow;
 
         public User User { get; set; }
-        public CryptoCurrency Currency { get; set; }
     }
 }

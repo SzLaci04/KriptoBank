@@ -33,6 +33,13 @@ namespace KriptoBank.Services.Services
             if (user == null)
                 return false; 
             user.IsDeleted = true;
+            //delete wallet
+            var wallet = await _appDbContext.Wallets.FirstOrDefaultAsync(w => w.UserId == userId);
+            if (wallet != null)
+            {
+                wallet.IsDeleted = true;
+                _appDbContext.Wallets.Update(wallet);
+            }
             _appDbContext.Users.Update(user);
             await _appDbContext.SaveChangesAsync();
             return true;

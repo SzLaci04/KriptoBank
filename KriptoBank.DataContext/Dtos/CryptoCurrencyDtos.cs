@@ -10,12 +10,10 @@ namespace KriptoBank.DataContext.Dtos
     public class UserCryptoCurrencyDto
     {
         public int Id { get; set; }
-        public string Acronym { get; set; }
-        public string Name { get; set; }
-        public float TotalAmount { get; set; }
-        public float AvgPrice { get; set; }
-        public float CurrentPrice { get; set; }
-        public float BuyPrice { get; set; }
+        public int WalletId { get; set; }
+        public int CryptoId { get; set; }
+        public float PriceAtBuy { get; set; }
+        public float Amount { get; set; }
     }
     public class CryptoCurrencyDto
     {
