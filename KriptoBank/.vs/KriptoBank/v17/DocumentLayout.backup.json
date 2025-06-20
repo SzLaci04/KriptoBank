@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12166895-A01C-4484-9DB6-81C6B1D49A56}|..\\KriptoBank.Services\\KriptoBank.Services.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank.services\\services\\walletservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{12166895-A01C-4484-9DB6-81C6B1D49A56}|..\\KriptoBank.Services\\KriptoBank.Services.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank.services\\services\\cryptoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|solutionrelative:controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank\\controllers\\cryptoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|solutionrelative:controllers\\cryptoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAAA335-8FB3-44D1-97F9-7F89E445B961}|..\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank.datacontext\\entities\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EAAA335-8FB3-44D1-97F9-7F89E445B961}|..\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank.datacontext\\dtos\\cryptocurrencydtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAAA335-8FB3-44D1-97F9-7F89E445B961}|..\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank.datacontext\\entities\\cryptocurrency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{12166895-A01C-4484-9DB6-81C6B1D49A56}|..\\KriptoBank.Services\\KriptoBank.Services.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank.services\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAAA335-8FB3-44D1-97F9-7F89E445B961}|..\\KriptoBank.DataContext\\KriptoBank.DataContext.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank.datacontext\\dtos\\walletdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|solutionrelative:controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EB8A4280-D938-44EB-9109-D6851AD001A2}|KriptoBank.csproj|d:\\egyetem\\kriptobank\\kriptobank\\kriptobank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,84 +46,97 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "WalletDtos.cs",
-              "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Dtos\\WalletDtos.cs",
-              "RelativeDocumentMoniker": "..\\KriptoBank.DataContext\\Dtos\\WalletDtos.cs",
-              "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Dtos\\WalletDtos.cs",
-              "RelativeToolTip": "..\\KriptoBank.DataContext\\Dtos\\WalletDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T16:51:48.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "AutoMapperProfile.cs",
               "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\AutoMapperProfile.cs",
               "RelativeDocumentMoniker": "..\\KriptoBank.Services\\AutoMapperProfile.cs",
               "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\AutoMapperProfile.cs",
               "RelativeToolTip": "..\\KriptoBank.Services\\AutoMapperProfile.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBQAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T16:50:51.97Z",
+              "WhenOpened": "2025-06-20T18:20:35.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CryptoCurrency.cs",
+              "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Entities\\CryptoCurrency.cs",
+              "RelativeDocumentMoniker": "..\\KriptoBank.DataContext\\Entities\\CryptoCurrency.cs",
+              "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Entities\\CryptoCurrency.cs",
+              "RelativeToolTip": "..\\KriptoBank.DataContext\\Entities\\CryptoCurrency.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T18:19:02.088Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Wallet.cs",
-              "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Entities\\Wallet.cs",
-              "RelativeDocumentMoniker": "..\\KriptoBank.DataContext\\Entities\\Wallet.cs",
-              "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Entities\\Wallet.cs",
-              "RelativeToolTip": "..\\KriptoBank.DataContext\\Entities\\Wallet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "CryptoCurrencyDtos.cs",
+              "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Dtos\\CryptoCurrencyDtos.cs",
+              "RelativeDocumentMoniker": "..\\KriptoBank.DataContext\\Dtos\\CryptoCurrencyDtos.cs",
+              "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.DataContext\\Dtos\\CryptoCurrencyDtos.cs",
+              "RelativeToolTip": "..\\KriptoBank.DataContext\\Dtos\\CryptoCurrencyDtos.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAuwA4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T16:44:52.949Z",
+              "WhenOpened": "2025-06-20T18:07:38.557Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WalletServices.cs",
-              "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\Services\\WalletServices.cs",
-              "RelativeDocumentMoniker": "..\\KriptoBank.Services\\Services\\WalletServices.cs",
-              "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\Services\\WalletServices.cs",
-              "RelativeToolTip": "..\\KriptoBank.Services\\Services\\WalletServices.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAwwB8AAAAwAAAAAAAAAA==",
+              "Title": "CryptoServices.cs",
+              "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\Services\\CryptoServices.cs",
+              "RelativeDocumentMoniker": "..\\KriptoBank.Services\\Services\\CryptoServices.cs",
+              "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank.Services\\Services\\CryptoServices.cs",
+              "RelativeToolTip": "..\\KriptoBank.Services\\Services\\CryptoServices.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAnwD4AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T16:11:06.687Z",
+              "WhenOpened": "2025-06-20T17:03:05.836Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "cryptosController.cs",
+              "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\Controllers\\cryptosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\cryptosController.cs",
+              "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\Controllers\\cryptosController.cs",
+              "RelativeToolTip": "Controllers\\cryptosController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAADwvygAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T17:01:29.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "walletController.cs",
               "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\Controllers\\walletController.cs",
               "RelativeDocumentMoniker": "Controllers\\walletController.cs",
               "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\Controllers\\walletController.cs",
               "RelativeToolTip": "Controllers\\walletController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAIAwwB0AAABKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T16:05:58.636Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Egyetem\\KriptoBank\\KriptoBank\\KriptoBank\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAABZAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAwwDkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T20:54:04.307Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AutoMapperProfile.cs",
               "DocumentMoniker": "D:\\Egyetem\\Halado_prog2\\KriptoBank.Services\\AutoMapperProfile.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Halado_prog2\\KriptoBank.Services\\AutoMapperProfile.cs",

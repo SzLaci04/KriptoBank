@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KriptoBank.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b1d8ba38210e719ce34bd195d8e6bba6035d980")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15c12832d6f9c6b01ae3b3beda0cde2f58e3e03a")]
 [assembly: System.Reflection.AssemblyProductAttribute("KriptoBank.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KriptoBank.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,5 +1,63 @@
 [
   {
+    "ContainingType": "KriptoBank.Controllers.cryptosController",
+    "Method": "GetCryptos",
+    "RelativePath": "api/cryptos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.cryptosController",
+    "Method": "CreateCryptoCurrency",
+    "RelativePath": "api/cryptos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CreateCrypto",
+        "Type": "KriptoBank.DataContext.Dtos.CryptoCurrencyCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.cryptosController",
+    "Method": "GetSingleCrypto",
+    "RelativePath": "api/cryptos/{cryptoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cryptoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.cryptosController",
+    "Method": "DeleteCryptoCurrency",
+    "RelativePath": "api/cryptos/{cryptoId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cryptoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "KriptoBank.Controllers.usersController",
     "Method": "GetUserData",
     "RelativePath": "api/users/{id}",
