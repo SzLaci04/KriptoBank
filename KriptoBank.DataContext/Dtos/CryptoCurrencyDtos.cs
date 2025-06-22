@@ -44,9 +44,10 @@ namespace KriptoBank.DataContext.Dtos
     }
     public class CryptoHistoryDto
     {
+        public int Id { get; set; }
         public int CryptoId { get; set; }
-        public string Acronym { get; set; }
         public float CurrentPrice { get; set; }
-        public DateTime Time { get; set; }
+        public float OldPrice { get; set; }
+        public DateTime TimeOfChange { get; set; }
     }
 }

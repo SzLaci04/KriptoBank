@@ -12,7 +12,7 @@ namespace KriptoBank.DataContext.Entities
         public int? CryptoId { get; set; }
         public DateTime TimeOfChange { get; set; }=DateTime.UtcNow;
         public float OldPrice { get; set; }
-        public float NewPrice { get; set; }
+        public float CurrentPrice { get; set; }
         public CryptoCurrency Currency { get; set; }
     }
 }

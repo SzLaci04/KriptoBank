@@ -44,4 +44,31 @@ namespace KriptoBank.Controllers
             return NotFound("Nincs ilyen id-vel ellátott kriptovaluta!");
         }
     }
+    [ApiController]
+    [Route("api/[controller]")]
+    public class  cryptoController:ControllerBase
+    {
+        private readonly ICryptoServices _CryptoService;
+        public cryptoController(ICryptoServices cryptoService)
+        {
+            _CryptoService = cryptoService;
+        }
+        [HttpPut("price")]
+        public async Task<IActionResult> ManualPriceChange(CryptoPriceUpdateDto priceUpdateDto)
+        {
+            var newprice= await _CryptoService.ManualPriceChangeAsync(priceUpdateDto);
+            if (newprice != null)
+                return Ok(newprice);
+            return NotFound("Nincs ilyen id-vel ellátott kriptovaluta!");
+        }
+
+        [HttpGet("price/history/{cryptoId}")]
+        public async Task<IActionResult> GetPriceHistory(int cryptoId)
+        {
+            var history = await _CryptoService.GetCryptoHistoryAsync(cryptoId);
+            if (history != null)
+                return Ok(history);
+            return NotFound("Nincs ilyen id-vel ellátott kriptovaluta!");
+        }
+    }
 }

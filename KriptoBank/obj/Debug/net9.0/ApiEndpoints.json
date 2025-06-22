@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "KriptoBank.Controllers.cryptoController",
+    "Method": "ManualPriceChange",
+    "RelativePath": "api/crypto/price",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "priceUpdateDto",
+        "Type": "KriptoBank.DataContext.Dtos.CryptoPriceUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.cryptoController",
+    "Method": "GetPriceHistory",
+    "RelativePath": "api/crypto/price/history/{cryptoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cryptoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "KriptoBank.Controllers.cryptosController",
     "Method": "GetCryptos",
     "RelativePath": "api/cryptos",

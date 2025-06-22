@@ -25,6 +25,8 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IWalletServices, WalletServices>();
 builder.Services.AddScoped<ICryptoServices, CryptoServices>();
 builder.Services.AddScoped<ITradeServices, TradeServices>();
+builder.Services.AddSingleton<IBackGroundServiceProvider,BackGroundServiceProvider>();
+builder.Services.AddHostedService<CryptoBackgroundService>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddEndpointsApiExplorer();

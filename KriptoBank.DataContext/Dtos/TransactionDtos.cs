@@ -73,9 +73,8 @@ namespace KriptoBank.DataContext.Dtos
 
     public class PortfolioDto
     {
-        public int WalletId { get; set; }
         public int UserId { get; set; }
-        public List<UserCryptoCurrency> userCryptoCurrencies { get; set; } = new List<UserCryptoCurrency>();
+        public List<UserCryptoCurrencyDto> userCryptoCurrencies { get; set; } = new List<UserCryptoCurrencyDto>();
         public float BaseBalance { get; set; }
         public float TotalBalance { get; set; }
     }

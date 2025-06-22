@@ -66,11 +66,36 @@ namespace KriptoBank.Services.Services
             return null;
         }
 
-        public Task<PortfolioDto> GetPortfolioAsync(int userId)
+        public async Task<PortfolioDto> GetPortfolioAsync(int userId)
         {
-            var wallet= _appDbContext.Wallets.Include(w => w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId && !w.IsDeleted);
-            if (wallet == null)
-                return Task.FromResult<PortfolioDto>(null);
+            var wallet=await _appDbContext.Wallets.Include(w => w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId);
+            if (wallet == null|| wallet.IsDeleted)
+                return null;
+            var cryptos = await _appDbContext.CryptoCurrencies
+                .Where(c => !c.IsDeleted)
+                .ToListAsync();
+            var portfolio = new PortfolioDto
+            {
+                UserId = userId,
+                BaseBalance = wallet.Balance,
+                userCryptoCurrencies = _mapper.Map<List<UserCryptoCurrencyDto>>(wallet.UserCurrencies.ToList()),
+                TotalBalance = wallet.Balance
+            };
+            float cryptoBalance = 0f;
+            var userCurrencies = wallet.UserCurrencies;
+            foreach (var uc in userCurrencies)
+            {
+                uc.WalletId = uc.Wallet.Id;
+                    uc.Wallet = null;
+                Console.Write(uc.CryptoId);
+                var crypto=cryptos.FirstOrDefault(c => c.Id == uc.CryptoId);
+                if (crypto != null)
+                { 
+                    cryptoBalance += uc.Amount * crypto.CurrentPrice;
+                }
+            }
+            portfolio.TotalBalance += cryptoBalance;
+            return portfolio;
         }
 
         public async Task<TransactionDto> SellCryptoAsync(TransactionSellDto sellDto)

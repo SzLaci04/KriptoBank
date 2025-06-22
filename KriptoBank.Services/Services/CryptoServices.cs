@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -18,6 +19,8 @@ namespace KriptoBank.Services.Services
         public Task<CryptoCurrencyDto> GetCryptoAsync(int cryptoId);
         public Task<CryptoCurrencyDto> CreateCryptoAsnyc(CryptoCurrencyCreateDto CreateCrypto);
         public Task<bool> DeleteCryptoAsync(int cryptoId);
+        public Task<CryptoCurrencyDto> ManualPriceChangeAsync(CryptoPriceUpdateDto priceUpdate);
+        public Task<List<CryptoHistoryDto>> GetCryptoHistoryAsync(int cryptoId);
     }
     public class CryptoServices:ICryptoServices
     {
@@ -28,6 +31,8 @@ namespace KriptoBank.Services.Services
             _appDbContext = context;
             _mapper = mapper;
         }
+
+        
 
         public async Task<CryptoCurrencyDto> CreateCryptoAsnyc(CryptoCurrencyCreateDto CreateCrypto)
         {
@@ -63,6 +68,46 @@ namespace KriptoBank.Services.Services
             if (Crypto == null||Crypto.IsDeleted)
                 return null;
             return _mapper.Map<CryptoCurrencyDto>(Crypto);
+        }
+
+        public async Task<List<CryptoHistoryDto>> GetCryptoHistoryAsync(int cryptoId)
+        {
+            var crypto = await _appDbContext.CryptoCurrencies.FindAsync(cryptoId);
+            var history= await _appDbContext.Histories.Where(h => h.CryptoId == cryptoId).OrderBy(h => h.TimeOfChange).ToListAsync();
+            if (crypto == null || crypto.IsDeleted)
+                return null;
+            return _mapper.Map<List<CryptoHistoryDto>>(history);
+        }
+
+        public async Task<CryptoCurrencyDto> ManualPriceChangeAsync(CryptoPriceUpdateDto priceUpdate)
+        {
+            var crypto = await _appDbContext.CryptoCurrencies.FindAsync(priceUpdate.Id);
+            if (crypto == null || crypto.IsDeleted)
+                return null;
+            var newhistory = new CryptoHistory
+            {
+                CryptoId = crypto.Id,
+                OldPrice = crypto.CurrentPrice,
+                CurrentPrice = priceUpdate.NewPrice,
+                TimeOfChange = DateTime.Now,
+            };
+            crypto.CurrentPrice = priceUpdate.NewPrice;
+            await _appDbContext.Histories.AddAsync(newhistory);
+            await _appDbContext.SaveChangesAsync();
+            var histories = await _appDbContext.Histories
+                .Where(h => h.CryptoId == crypto.Id)
+                .OrderByDescending(h => h.TimeOfChange)
+                .ToListAsync();
+            float avg = histories[0].OldPrice;
+            foreach (var history in histories)
+            {
+                avg += history.CurrentPrice;
+            }
+            avg /= histories.Count + 1;
+            crypto.AvgPrice = avg;
+            _appDbContext.CryptoCurrencies.Update(crypto);
+            await _appDbContext.SaveChangesAsync();
+            return _mapper.Map<CryptoCurrencyDto>(crypto);
         }
     }
 }

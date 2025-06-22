@@ -28,10 +28,13 @@ namespace KriptoBank.Services
                 .ForMember(dest => dest.CurrentPrice, opt => opt.MapFrom(src => src.StartPrice))
                 .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.StartAmount));
             CreateMap<UserCryptoCurrency,UserCryptoCurrencyDto>().ReverseMap();
+            CreateMap<UserCryptoCurrencyDto,UserCryptoCurrency>();
             //Transaction mapping
             CreateMap<CryptoTransaction,TransactionDto>().ReverseMap();
             CreateMap<TransactionSellDto, CryptoTransaction>();
             CreateMap<TransactionBuyDto, CryptoTransaction>();
+            //History mapping
+            CreateMap<CryptoHistory, CryptoHistoryDto>().ReverseMap();
         }
     }
 }
