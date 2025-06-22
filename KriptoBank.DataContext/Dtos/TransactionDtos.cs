@@ -31,20 +31,20 @@ namespace KriptoBank.DataContext.Dtos
 
     public class TransactionBuyDto
     {
-        [Required]
+        [Required(ErrorMessage ="Felhasználó azonosító megadása kötelező")]
         public int UserId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Kriptovaluta azonosító megadása kötelező")]
         public int CryptoId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Darabszám megadása kötelező")]
         public int Amount { get; set; }
     }
     public class TransactionSellDto
     {
-        [Required]
+        [Required(ErrorMessage = "Felhasználó azonosító megadása kötelező")]
         public int UserId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Kriptovaluta azonosító megadása kötelező")]
         public int CryptoId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Darabszám megadása kötelező")]
         public int Amount { get; set; }
     }
     public class ProfitSummaryDto

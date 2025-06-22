@@ -26,20 +26,26 @@ namespace KriptoBank.DataContext.Dtos
     }
     public class CryptoCurrencyCreateDto
     {
-        [Required]
-        [MaxLength(9)]
+        [Required(ErrorMessage ="Rövidítés megadása kötelező")]
+        [MaxLength(9,ErrorMessage ="Maximum 9 karakter lehet")]
+        [MinLength(3, ErrorMessage = "Minimum 3 karakter kell")]
         public string Acronym { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Név megadása kötelező")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Kezdeti érték megadása kötelező")]
+        [Range(1,10000,ErrorMessage ="1 és 10000 között kell hogy legyen")]
         public float StartPrice { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Kezdeti darabszám megadása kötelező")]
+        [Range(1, 10000, ErrorMessage = "1 és 10000 között kell hogy legyen")]
         public int StartAmount { get; set; }
     }
 
     public class CryptoPriceUpdateDto
     {
+        [Required(ErrorMessage ="Azonosító megadása kötelező")]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Kezdeti érték megadása kötelező")]
+        [Range(1, 10000, ErrorMessage = "1 és 10000 között kell hogy legyen")]
         public float NewPrice { get; set; }
     }
     public class CryptoHistoryDto

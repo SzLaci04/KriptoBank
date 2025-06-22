@@ -34,7 +34,8 @@ namespace KriptoBank.Services.Services
             wallet.IsDeleted = true;
             _appDbContext.Wallets.Update(wallet);
             //sell all cryptos inside at price bought and then delete wallet
-            foreach(var uc in wallet.UserCurrencies)
+            var uCurrencies = wallet.UserCurrencies.ToList();
+            foreach (var uc in uCurrencies)
             {
                 var sell = new CryptoTransaction { UserId = userId, CryptoId = uc.CryptoId, Amount = uc.Amount };
                 sell.TimeOfTransaction = DateTime.Now;
@@ -51,6 +52,8 @@ namespace KriptoBank.Services.Services
                 await _appDbContext.SaveChangesAsync();
                 //add transaction
                 await _appDbContext.Transactions.AddAsync(sell);
+                //remove usercurrency from wallet
+                wallet.UserCurrencies.Remove(uc);
                 await _appDbContext.SaveChangesAsync();
             }
             await _appDbContext.SaveChangesAsync();
@@ -79,7 +82,7 @@ namespace KriptoBank.Services.Services
 
         public async Task<WalletCurrentStateDto?> UpdateBalanceAsync(int userId, WalletUpdateDto newBalance)
         {
-            var Wallet = await _appDbContext.Wallets.FirstOrDefaultAsync(w => w.UserId == userId);
+            var Wallet = await _appDbContext.Wallets.Include(w=>w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId);
             if (Wallet == null || Wallet.IsDeleted)
                 return null;
             Wallet.Balance=newBalance.Balance;

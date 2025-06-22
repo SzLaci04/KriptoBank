@@ -36,6 +36,8 @@ namespace KriptoBank.Services.Services
                     Random r = new Random();
                     var oldPrice = crypto.CurrentPrice;
                     float newPrice = (float)Math.Round((1f+(float)(r.NextDouble() - 0.5) / 10)*oldPrice,2);
+                    if (newPrice == 0)
+                        newPrice = (float)Math.Round((1f + (float)(r.NextDouble()) / 10) * oldPrice, 2);
                     var newhistory = new CryptoHistory
                     {
                         CryptoId = crypto.Id,

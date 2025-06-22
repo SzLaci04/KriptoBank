@@ -17,7 +17,7 @@ namespace KriptoBank.DataContext.Dtos
     }
     public class WalletUpdateDto
     {
-        [Required]
+        [Required(ErrorMessage ="Új egyenleg megadása kötelező")]
         public float Balance { get; set; }
     }
 }

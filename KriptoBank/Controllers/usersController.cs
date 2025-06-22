@@ -30,7 +30,7 @@ namespace KriptoBank.Controllers
         {
             var user= await _userServices.RegisterUserAsync(userRegistrationDto);
             if (user.Email == "NotUnique")
-                return BadRequest("Ilyen email címmel már csináltak felhasználót!");
+                return BadRequest("Ilyen email címmel vagy felhasználónévvel már csináltak felhasználót!");
             return CreatedAtAction(nameof(GetUserData),new { id=user.Id},user);
                 
         }
@@ -39,7 +39,7 @@ namespace KriptoBank.Controllers
         {
             var user = await _userServices.UpdateUserPasswordAsync(id, updatePasswordDto);
             if (user == null)
-                return NotFound("Nincs ilyen id-vel ellátott felhasználó");
+                return NotFound("Nincs ilyen id-vel ellátott felhasználó vagy érvénytelen felhasználónév/emailcím");
             return Ok(user);
         }
         [HttpDelete("{userId}")]

@@ -9,32 +9,25 @@ namespace KriptoBank.DataContext.Dtos
 {
     public class UserRegistrationDto
     {
-        [Required]
+        [Required(ErrorMessage ="Felhasználónév megadása kötelező")]
         public string Username { get; set; }
-        [Required]
-        [MinLength(6)]
+        [Required(ErrorMessage ="Jelszó megadása kötelező")]
+        [MinLength(6,ErrorMessage ="Legalább 6 karakter kell hogy legyen")]
         public string Password { get; set; }
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage ="Emailcím megadása kötelező")]
+        [EmailAddress(ErrorMessage ="Emailcím formátum kötelező")]
         public string Email { get; set; }
     }
-    public class UserLoginDto
-    {
-        [Required]
-        public string Username { get; set; }
-        [Required]
-        [MinLength(6)]
-        public string Password { get; set; }
-    }
+
     public class UserUpdatePasswordDto
     {
-        [Required]
+        [Required(ErrorMessage = "Felhasználónév megadása kötelező")]
         public string Username { get; set; }
-        [Required]
-        [MinLength(6)]
+        [Required(ErrorMessage = "Jelszó megadása kötelező")]
+        [MinLength(6, ErrorMessage = "Legalább 6 karakter kell hogy legyen")]
         public string Password { get; set; }
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Emailcím megadása kötelező")]
+        [EmailAddress(ErrorMessage = "Emailcím formátum kötelező")]
         public string Email { get; set; }
     }
     public class UserDataDto

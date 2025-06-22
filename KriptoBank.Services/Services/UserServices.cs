@@ -36,7 +36,8 @@ namespace KriptoBank.Services.Services
 
             //sell cryptos in wallet at price bought and then delete wallet, user
             var wallet = await _appDbContext.Wallets.Include(w => w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId);
-            foreach (var uc in wallet.UserCurrencies)
+            var userCurrencies = wallet.UserCurrencies.ToList();
+            foreach (var uc in userCurrencies)
             {
                 var sell = new CryptoTransaction { UserId = userId, CryptoId = uc.CryptoId, Amount = uc.Amount };
                 sell.TimeOfTransaction = DateTime.Now;
@@ -53,6 +54,8 @@ namespace KriptoBank.Services.Services
                 await _appDbContext.SaveChangesAsync();
                 //add transaction
                 await _appDbContext.Transactions.AddAsync(sell);
+                //remove usercurrency from wallet
+                wallet.UserCurrencies.Remove(uc);
                 await _appDbContext.SaveChangesAsync();
             }
             //delete wallet
@@ -81,7 +84,7 @@ namespace KriptoBank.Services.Services
             var allUsers= _appDbContext.Users.ToList();
             foreach(var _user in allUsers.Where(u=>!u.IsDeleted))
             {
-                if (_user.Email == user.Email)
+                if (_user.Email == user.Email||user.Username==_user.Username)
                     return new UserDataDto { Username = "NotUnique", Email = "NotUnique", Id = -1 };
             }
             //add user
@@ -96,6 +99,14 @@ namespace KriptoBank.Services.Services
 
         public async Task<UserDataDto> UpdateUserPasswordAsync(int userId, UserUpdatePasswordDto userUpdate)
         {
+            //egyedi felhasználónév és emailcím ellenőrzése
+
+            var username = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Username == userUpdate.Username);
+            if (username != null)
+                return null;
+            var email = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Email == userUpdate.Email);
+            if (email != null)
+                return null;
             var user = await _appDbContext.Users.FindAsync(userId);
             if ( user==null|| user.IsDeleted)
                 return null;
