@@ -13,7 +13,7 @@ namespace KriptoBank.DataContext.Dtos
         public int Id { get; set; }
         public int UserId { get; set; }
         public int CryptoId { get; set; }
-        public TransactionType Type { get; set; }
+        public string Type { get; set; }
         public int Amount { get; set; }
         public float Price { get; set; }
         public float TotalPrice { get; set; }
@@ -24,10 +24,9 @@ namespace KriptoBank.DataContext.Dtos
         public int Id { get; set; }
         public int UserId { get; set; }
         public int CryptoId { get; set; }
-        public TransactionType Type { get; set; }
+        public string Type { get; set; }
         public int Amount { get; set; }
         public float Price { get; set; }
-        public DateTime TimeOfTransaction { get; set; }
     }
 
     public class TransactionBuyDto
@@ -51,7 +50,7 @@ namespace KriptoBank.DataContext.Dtos
     public class ProfitSummaryDto
     {
         public int UserId { get; set; }
-        public float TotalInvestment { get; set; }
+        public float BaseValue { get; set; }
         public float CurrentValue { get; set; }
         public float TotalChange { get; set; }
     }
@@ -63,12 +62,12 @@ namespace KriptoBank.DataContext.Dtos
     public class CryptoChangeDto
     {
         public int CryptoId { get; set; }
-        public string Acronym { get; set; }
-        public string Name { get; set; }
-        public float CryptoAmount { get; set; }
-        public float AvgPrice { get; set; }
+        public float PriceAtBuy { get; set; }
         public float CurrentPrice { get; set; }
+        public float AvgPrice { get; set; }
         public float Change { get; set; }
+        public int Amount { get; set; }
+        public float TotalChange { get; set; }
     }
 
     public class PortfolioDto

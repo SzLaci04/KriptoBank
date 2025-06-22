@@ -46,7 +46,7 @@ namespace KriptoBank.Services.Services
             if (wallet.Balance>=buy.TotalPrice&&crypto.TotalAmount>0)
             {
                 //update wallet
-                //check if user has already bought this crypto before and increase that
+                //check if user has already bought this crypto before and increase that, else add to it
                 if (wallet.UserCurrencies.FirstOrDefault(uc => uc.CryptoId == crypto.Id)!=null)
                     wallet.UserCurrencies.FirstOrDefault(uc=>uc.CryptoId==crypto.Id).Amount+=buy.Amount;
                 else
@@ -71,26 +71,21 @@ namespace KriptoBank.Services.Services
             var wallet=await _appDbContext.Wallets.Include(w => w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId);
             if (wallet == null|| wallet.IsDeleted)
                 return null;
-            var cryptos = await _appDbContext.CryptoCurrencies
-                .Where(c => !c.IsDeleted)
-                .ToListAsync();
+            var cryptos = await _appDbContext.CryptoCurrencies.Where(c => !c.IsDeleted).ToListAsync();
             var portfolio = new PortfolioDto
             {
                 UserId = userId,
                 BaseBalance = wallet.Balance,
-                userCryptoCurrencies = _mapper.Map<List<UserCryptoCurrencyDto>>(wallet.UserCurrencies.ToList()),
+                userCryptoCurrencies = _mapper.Map<List<UserCryptoCurrencyDto>>(wallet.UserCurrencies.Where(uc=>cryptos.FirstOrDefault(c=>c.Id==uc.CryptoId)!=null)),
                 TotalBalance = wallet.Balance
             };
+            var walletid = wallet.Id;
             float cryptoBalance = 0f;
-            var userCurrencies = wallet.UserCurrencies;
-            foreach (var uc in userCurrencies)
+            foreach (var uc in portfolio.userCryptoCurrencies)
             {
-                uc.WalletId = uc.Wallet.Id;
-                    uc.Wallet = null;
-                Console.Write(uc.CryptoId);
                 var crypto=cryptos.FirstOrDefault(c => c.Id == uc.CryptoId);
                 if (crypto != null)
-                { 
+                {
                     cryptoBalance += uc.Amount * crypto.CurrentPrice;
                 }
             }

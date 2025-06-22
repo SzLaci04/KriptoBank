@@ -32,8 +32,6 @@ namespace KriptoBank.Services.Services
             _mapper = mapper;
         }
 
-        
-
         public async Task<CryptoCurrencyDto> CreateCryptoAsnyc(CryptoCurrencyCreateDto CreateCrypto)
         {
             var newCrypto=_mapper.Map<CryptoCurrency>(CreateCrypto);
@@ -51,6 +49,40 @@ namespace KriptoBank.Services.Services
             var crypto = await _appDbContext.CryptoCurrencies.FindAsync(cryptoId);
             if (crypto == null||crypto.IsDeleted) 
                 return false;
+
+            //sell all cryptos at price bought and then delete crypto
+            var wallets = await _appDbContext.Wallets.Include(w => w.UserCurrencies).ToListAsync();
+            foreach (var wallet in wallets)
+            {
+                var userCrypto = wallet.UserCurrencies.FirstOrDefault(uc => uc.CryptoId == cryptoId);
+                if (userCrypto != null)
+                {
+                    var sell = new CryptoTransaction
+                    {
+                        UserId = wallet.UserId,
+                        CryptoId = cryptoId,
+                        Amount = userCrypto.Amount,
+                        Price = userCrypto.PriceAtBuy,
+                        TotalPrice = userCrypto.Amount * userCrypto.PriceAtBuy,
+                        TimeOfTransaction = DateTime.Now,
+                        Type = TransactionType.sell
+                    };
+                    //update wallet
+                    userCrypto.Amount -= sell.Amount;
+                    if (userCrypto.Amount == 0)
+                    {
+                        wallet.UserCurrencies.Remove(userCrypto);
+                    }
+                    wallet.Balance += sell.TotalPrice;
+                    _appDbContext.Wallets.Update(wallet);
+                    await _appDbContext.SaveChangesAsync();
+                    //add transaction
+                    await _appDbContext.Transactions.AddAsync(sell);
+                    await _appDbContext.SaveChangesAsync();
+                    //remove from user's wallet
+                    wallet.UserCurrencies.Remove(userCrypto);
+                }
+            }
             crypto.IsDeleted = true;
             await _appDbContext.SaveChangesAsync();
             return true;

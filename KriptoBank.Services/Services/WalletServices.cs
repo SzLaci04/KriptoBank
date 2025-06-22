@@ -28,20 +28,52 @@ namespace KriptoBank.Services.Services
         }
         public async Task<bool> DeleteWalletAsync(int userId)
         {
-            var wallet = await _appDbContext.Wallets.FirstOrDefaultAsync(w=>w.UserId==userId);
+            var wallet = await _appDbContext.Wallets.Include(w=>w.UserCurrencies).FirstOrDefaultAsync(w=>w.UserId==userId);
             if (wallet == null||wallet.IsDeleted)
                 return false;
             wallet.IsDeleted = true;
             _appDbContext.Wallets.Update(wallet);
+            //sell all cryptos inside at price bought and then delete wallet
+            foreach(var uc in wallet.UserCurrencies)
+            {
+                var sell = new CryptoTransaction { UserId = userId, CryptoId = uc.CryptoId, Amount = uc.Amount };
+                sell.TimeOfTransaction = DateTime.Now;
+                sell.Type = TransactionType.sell;
+                //check if crypto exists
+                var crypto = await _appDbContext.CryptoCurrencies.FindAsync(sell.CryptoId);
+                if (crypto == null || crypto.IsDeleted)
+                    continue;
+                sell.Price = uc.PriceAtBuy;
+                sell.TotalPrice = sell.Amount * sell.Price;
+                //update crypto
+                crypto.TotalAmount += sell.Amount;
+                _appDbContext.CryptoCurrencies.Update(crypto);
+                await _appDbContext.SaveChangesAsync();
+                //add transaction
+                await _appDbContext.Transactions.AddAsync(sell);
+                await _appDbContext.SaveChangesAsync();
+            }
             await _appDbContext.SaveChangesAsync();
             return true;
         }
 
         public async Task<WalletCurrentStateDto> GetWalletAsync(int userId)
         {
+            var cryptos = await _appDbContext.CryptoCurrencies.ToListAsync();
+
             var wallet = await _appDbContext.Wallets.Include(w=>w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId);
             if (wallet == null || wallet.IsDeleted)
                 return null;
+            var userCurrencies = wallet.UserCurrencies.ToList();
+            foreach(var uc in userCurrencies)
+            {
+                var crypto = cryptos.FirstOrDefault(c => c.Id == uc.CryptoId);
+                if(crypto==null||crypto.IsDeleted)
+                {
+                    wallet.UserCurrencies.Remove(uc);
+                }
+            }
+            
             return _mapper.Map<WalletCurrentStateDto>(wallet);
         }
 

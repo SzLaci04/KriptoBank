@@ -33,6 +33,7 @@ namespace KriptoBank.Services
             CreateMap<CryptoTransaction,TransactionDto>().ReverseMap();
             CreateMap<TransactionSellDto, CryptoTransaction>();
             CreateMap<TransactionBuyDto, CryptoTransaction>();
+            CreateMap<CryptoTransaction, TransactionShortDto>().ReverseMap();
             //History mapping
             CreateMap<CryptoHistory, CryptoHistoryDto>().ReverseMap();
         }

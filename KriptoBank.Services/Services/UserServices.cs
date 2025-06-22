@@ -31,11 +31,32 @@ namespace KriptoBank.Services.Services
         {
             var user=await _appDbContext.Users.FindAsync(userId);
             if (user == null)
-                return false; 
+                return false;
             user.IsDeleted = true;
+
+            //sell cryptos in wallet at price bought and then delete wallet, user
+            var wallet = await _appDbContext.Wallets.Include(w => w.UserCurrencies).FirstOrDefaultAsync(w => w.UserId == userId);
+            foreach (var uc in wallet.UserCurrencies)
+            {
+                var sell = new CryptoTransaction { UserId = userId, CryptoId = uc.CryptoId, Amount = uc.Amount };
+                sell.TimeOfTransaction = DateTime.Now;
+                sell.Type = TransactionType.sell;
+                //check if crypto exists
+                var crypto = await _appDbContext.CryptoCurrencies.FindAsync(sell.CryptoId);
+                if (crypto == null || crypto.IsDeleted)
+                    continue;
+                sell.Price = uc.PriceAtBuy;
+                sell.TotalPrice = sell.Amount * sell.Price;
+                //update crypto
+                crypto.TotalAmount += sell.Amount;
+                _appDbContext.CryptoCurrencies.Update(crypto);
+                await _appDbContext.SaveChangesAsync();
+                //add transaction
+                await _appDbContext.Transactions.AddAsync(sell);
+                await _appDbContext.SaveChangesAsync();
+            }
             //delete wallet
-            var wallet = await _appDbContext.Wallets.FirstOrDefaultAsync(w => w.UserId == userId);
-            if (wallet != null)
+            if (wallet != null||!wallet.IsDeleted)
             {
                 wallet.IsDeleted = true;
                 _appDbContext.Wallets.Update(wallet);

@@ -25,6 +25,9 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IWalletServices, WalletServices>();
 builder.Services.AddScoped<ICryptoServices, CryptoServices>();
 builder.Services.AddScoped<ITradeServices, TradeServices>();
+builder.Services.AddScoped<IProfitService, ProfitService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
 builder.Services.AddSingleton<IBackGroundServiceProvider,BackGroundServiceProvider>();
 builder.Services.AddHostedService<CryptoBackgroundService>();
 

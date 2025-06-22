@@ -106,6 +106,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "KriptoBank.Controllers.profitController",
+    "Method": "GetUserProfits",
+    "RelativePath": "api/profit/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.profitController",
+    "Method": "GetUserProfitsDetails",
+    "RelativePath": "api/profit/details/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "KriptoBank.Controllers.tradeController",
     "Method": "CryptoBuy",
     "RelativePath": "api/trade/buy",
@@ -132,6 +164,38 @@
       {
         "Name": "sellDto",
         "Type": "KriptoBank.DataContext.Dtos.TransactionSellDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.transactionsController",
+    "Method": "GetTransaction",
+    "RelativePath": "api/transactions/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KriptoBank.Controllers.transactionsController",
+    "Method": "GetTransactionDetail",
+    "RelativePath": "api/transactions/details/{transactionId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transactionId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
